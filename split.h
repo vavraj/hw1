@@ -18,5 +18,7 @@ struct Node
 };
 
 void split(Node*& in, Node*& odds, Node*& evens);
-// WRITE YOUR CODE HERE
+void append(Node*& head, int v);
+void print(Node* head);
+
 #endif

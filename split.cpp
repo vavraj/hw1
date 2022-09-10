@@ -11,16 +11,52 @@ the function below should be the only one in this file.
 */
 
 #include "split.h"
+#include <cstddef>
+#include <iostream>
+using namespace std;
 
 /* Add a prototype for a helper function here if you need */
+// void insert(Node*& head, Node*& value)
 
-void split(Node*& in, Node*& odds, Node*& evens)
-{
-  /* Add code here */
-// WRITE YOUR CODE HERE
+void split(Node*& in, Node*& odds, Node*& evens) {
+	if (in == nullptr) {
+		return;
+	} 
+	if (in->value % 2 == 0) { 
+		if (evens == nullptr) {
+			evens = in; 
+			in = in->next;
+			evens->next = nullptr;
+			split(in, odds, evens->next);
+		} else {
+			evens = in;
+			in = in->next;
+			evens->next = nullptr;
+			split(in, odds, evens->next);
+		}
+	} else {
+		if (odds == NULL) {
+			odds = in;
+			in = in->next;
+			odds->next = nullptr;
+			split(in, odds->next, evens);
+		} else {
 
+			odds = in;
+			in = in->next;
+			odds->next = nullptr;
+			split(in, odds->next, evens);
+		}
+	}
 }
 
 /* If you needed a helper function, write it here */
 
-// WRITE YOUR CODE HERE
+void print(Node* ptr) {
+    if (ptr == NULL) {
+        cout << endl;
+        return;
+    }
+    cout << ptr->value << endl;
+    print(ptr->next);
+}
