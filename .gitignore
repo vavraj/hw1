@@ -5,6 +5,3 @@ split
 split.o
 split_test.exe
 split_test.o
-ulliststr.cpp
-ulliststr.h
-ulliststr_test.cpp
